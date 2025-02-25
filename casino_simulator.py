@@ -47,7 +47,7 @@ def casino_simulator(
 
 st.set_page_config(page_title="Gambler Simulator", layout="wide")
 st.image("https://i.imgur.com/meqsjO3.png", width=300)
-st.markdown("<h4 style='text-align: center;'>Can't Yield? Bet Everything Today! 🎰😆</h10>", unsafe_allow_html=True)
+st.markdown("<h10 style='text-align: center;'>Can't Yield? Bet Everything Today! 🎰😆</h10>", unsafe_allow_html=True)
 st.title("Gambler Simulator - Online Version")
 num_players = st.number_input("Number of Players", min_value=1, max_value=100000, value=10000, step=1)
 house_edge = st.number_input("House Edge", min_value=0.001, max_value=0.1, value=0.01, step=0.001)
