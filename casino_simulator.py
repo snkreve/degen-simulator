@@ -66,52 +66,41 @@ if st.button("Run Simulation"):
     csv_buffer = results_df.to_csv(index=False).encode('utf-8')
     st.download_button("Download Simulation Results (CSV)", csv_buffer, file_name="casino_simulation_results.csv", mime="text/csv")
 
-st.subheader("Casino Simulator - How It Works (English)")
-st.write("""
-This **Casino Simulator** models a real-world gambling environment by simulating thousands of players with varying betting behaviors. It calculates casino profits, player winnings, and overall **Return to Player (RTP)** based on defined game conditions.
+col1, col2 = st.columns([2, 1])
+with col1:
+    st.subheader("Casino Simulator - How It Works")
+    st.write("""
+    This **Casino Simulator** models a real-world gambling environment by simulating thousands of players with varying betting behaviors. It calculates casino profits, player winnings, and overall **Return to Player (RTP)** based on defined game conditions.
 
-### How It Works
-1. **Player Simulation**  
-   - Each player starts with a **random deposit amount** based on a log-normal distribution.
-   - Players place bets at **multipliers of 10x, 100x, or 1000x** of their deposit.
+    ### How It Works
+    1. **Player Simulation**  
+       - Each player starts with a **random deposit amount** based on a log-normal distribution.
+       - Players place bets at **multipliers of 10x, 100x, or 1000x** of their deposit.
 
-2. **House Edge Calculation**  
-   - Every bet has a defined **House Edge (default 1%)**, representing the casino's statistical advantage.
-   - Expected losses are calculated as **wager × house edge**.
+    2. **House Edge Calculation**  
+       - Every bet has a defined **House Edge (default 1%)**, representing the casino's statistical advantage.
+       - Expected losses are calculated as **wager × house edge**.
 
-3. **Actual Game Outcomes**  
-   - Actual losses are **randomly distributed** around the expected value using a normal distribution.
-   - Some players may lose less or more than expected due to natural variance.
+    3. **Actual Game Outcomes**  
+       - Actual losses are **randomly distributed** around the expected value using a normal distribution.
+       - Some players may lose less or more than expected due to natural variance.
 
-4. **Bonus System**  
-   - **Weekly Bonus, Monthly Bonus, Rakeback**: Calculated as **wager × house edge × bonus percentage**.
-   - **Loseback**: Based on actual player losses and refunded at a specified percentage.
+    4. **Bonus System**  
+       - **Weekly Bonus, Monthly Bonus, Rakeback**: Calculated as **wager × house edge × bonus percentage**.
+       - **Loseback**: Based on actual player losses and refunded at a specified percentage.
 
-5. **Casino Profit & RTP Calculation**  
-   - The total **casino profit** is calculated as **actual losses - total bonuses paid**.
-   - **RTP (Return to Player)** is derived from the total winnings distributed to players.
+    5. **Casino Profit & RTP Calculation**  
+       - The total **casino profit** is calculated as **actual losses - total bonuses paid**.
+       - **RTP (Return to Player)** is derived from the total winnings distributed to players.
 
-### Key Features
-✅ Supports **custom number of players**  
-✅ Adjustable **House Edge, Bonuses, and Loseback**  
-✅ Provides a **detailed summary** of casino performance  
-✅ **CSV export option** for further analysis  
+    ### Key Features
+    ✅ Supports **custom number of players**  
+    ✅ Adjustable **House Edge, Bonuses, and Loseback**  
+    ✅ Provides a **detailed summary** of casino performance  
+    ✅ **CSV export option** for further analysis  
 
-**Cybet - Clear Your Mfer's Win**
-""")
+    **Cybet - Clear Your Mfer's Win**
+    """)
 
-# Animated Dice & Gambler Icon
-st.markdown("""
-<style>
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-.dice {
-  width: 50px;
-  height: 50px;
-  animation: spin 2s linear infinite;
-}
-</style>
-<img src="https://i.imgur.com/NiEALyA.gif" class="dice" />
-""", unsafe_allow_html=True)
+with col2:
+    st.image("https://i.imgur.com/NiEALyA.gif", width=250)
