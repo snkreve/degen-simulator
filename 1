@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
-import os
+import io
 
 def casino_simulator(
     num_players=10000,
@@ -90,8 +90,7 @@ if st.button("运行模拟"):
     results_df = casino_simulator(num_players, house_edge, bonuses, loseback)
     st.write(results_df)
 
-    # 允许用户下载 CSV
-    csv_file = "casino_simulation_results.csv"
-    results_df.to_csv(csv_file, index=False)
-    with open(csv_file, "rb") as f:
-        st.download_button("下载模拟结果 CSV", f, file_name="casino_simulation_results.csv")
+    # 允许用户下载 CSV（修正 Streamlit Cloud 兼容性）
+    csv_buffer = io.BytesIO()
+    results_df.to_csv(csv_buffer, index=False)
+    st.download_button("下载模拟结果 CSV", csv_buffer.getvalue(), file_name="casino_simulation_results.csv", mime="text/csv")
