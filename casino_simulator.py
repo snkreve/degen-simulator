@@ -46,7 +46,7 @@ def casino_simulator(
     return pd.DataFrame([results])
 
 st.set_page_config(page_title="Casino Simulator", layout="wide")
-st.image("https://imgur.com/aaA0DRe.png", width=200)
+st.image("https://i.imgur.com/meqsjO3.png", width=200)
 st.title("Casino Simulator - Online Version")
 num_players = st.number_input("Number of Players", min_value=1, max_value=100000, value=10000, step=1)
 house_edge = st.number_input("House Edge", min_value=0.001, max_value=0.1, value=0.01, step=0.001)
