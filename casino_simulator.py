@@ -112,10 +112,6 @@ st.markdown("""
   height: 50px;
   animation: spin 2s linear infinite;
 }
-.gambler {
-  width: 80px;
-}
 </style>
-<img src="https://imgur.com/dice_image.png" class="dice" />
-<img src="https://imgur.com/gambler_image.png" class="gambler" />
+<img src="https://i.imgur.com/NiEALyA.gif" class="dice" />
 """, unsafe_allow_html=True)
