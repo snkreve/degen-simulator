@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-·import streamlit as st
+import streamlit as st
 import time
 import random
 
@@ -91,4 +91,3 @@ with col1:
 
 with col2:
     st.image("https://i.imgur.com/NiEALyA.gif", width=500)
-
