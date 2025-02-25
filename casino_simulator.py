@@ -93,3 +93,18 @@ if st.button("Run Simulation"):
     # Allow user to download CSV
     csv_buffer = results_df.to_csv(index=False).encode('utf-8')
     st.download_button("Download Simulation Results (CSV)", csv_buffer, file_name="casino_simulation_results.csv", mime="text/csv")
+
+st.subheader("Casino Simulator - How It Works")
+st.write("""
+### Summary Calculation Formulas
+- **Total Expected Loss** = ∑ (Wager × House Edge)
+- **Total Actual Loss** = Randomized loss based on normal distribution around expected loss
+- **Total Bonuses Paid** = ∑ (Wager × House Edge × Bonus Percentage) + ∑ (Actual Loss × Loseback)
+- **Total Expected Profit** = Total Expected Loss - Total Bonuses Paid
+- **Total Actual Profit** = Total Actual Loss - Total Bonuses Paid
+- **Expected RTP** = 1 - House Edge
+- **Actual RTP** = 1 - (Total Actual Profit / Total Wager)
+- **Profitable Player Percentage** = (Profitable Players / Total Players) × 100
+
+**Cybet - Clear Your Mfer's Win**
+""")
