@@ -104,3 +104,4 @@ with col1:
 
 with col2:
     st.image("https://i.imgur.com/NiEALyA.gif", width=500)
+    
