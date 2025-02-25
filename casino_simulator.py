@@ -11,7 +11,7 @@ def casino_simulator(
     loseback=0.02
 ):
     """
-    Casino Simulator
+    Gambler Simulator
     """
     np.random.seed(42)
     deposit_amounts = np.random.lognormal(mean=6, sigma=1, size=num_players)
@@ -45,9 +45,9 @@ def casino_simulator(
     }
     return pd.DataFrame([results])
 
-st.set_page_config(page_title="Casino Simulator", layout="wide")
-st.image("https://i.imgur.com/meqsjO3.png", width=200)
-st.title("Casino Simulator - Online Version")
+st.set_page_config(page_title="Gambler Simulator", layout="wide")
+st.image("https://i.imgur.com/meqsjO3.png", width=300)
+st.title("Gambler Simulator - Online Version")
 num_players = st.number_input("Number of Players", min_value=1, max_value=100000, value=10000, step=1)
 house_edge = st.number_input("House Edge", min_value=0.001, max_value=0.1, value=0.01, step=0.001)
 loseback = st.number_input("Loseback Percentage", min_value=0.0, max_value=0.2, value=0.02, step=0.01)
@@ -68,40 +68,26 @@ if st.button("Run Simulation"):
 
 col1, col2 = st.columns([2, 1])
 with col1:
-    st.subheader("Casino Simulator - How It Works")
-    st.write("""
-    This **Casino Simulator** models a real-world gambling environment by simulating thousands of players with varying betting behaviors. It calculates casino profits, player winnings, and overall **Return to Player (RTP)** based on defined game conditions.
-
-    ### How It Works
-    1. **Player Simulation**  
-       - Each player starts with a **random deposit amount** based on a log-normal distribution.
-       - Players place bets at **multipliers of 10x, 100x, or 1000x** of their deposit.
-
-    2. **House Edge Calculation**  
-       - Every bet has a defined **House Edge (default 1%)**, representing the casino's statistical advantage.
-       - Expected losses are calculated as **wager × house edge**.
-
-    3. **Actual Game Outcomes**  
-       - Actual losses are **randomly distributed** around the expected value using a normal distribution.
-       - Some players may lose less or more than expected due to natural variance.
-
-    4. **Bonus System**  
-       - **Weekly Bonus, Monthly Bonus, Rakeback**: Calculated as **wager × house edge × bonus percentage**.
-       - **Loseback**: Based on actual player losses and refunded at a specified percentage.
-
-    5. **Casino Profit & RTP Calculation**  
-       - The total **casino profit** is calculated as **actual losses - total bonuses paid**.
-       - **RTP (Return to Player)** is derived from the total winnings distributed to players.
-
-    ### Key Features
-    ✅ Supports **custom number of players**  
-    ✅ Adjustable **House Edge, Bonuses, and Loseback**  
-    ✅ Provides a **detailed summary** of casino performance  
-    ✅ **CSV export option** for further analysis  
-
-    **Cybet - Clear Your Mfer's Win**
-    """)
+    st.subheader("Gambler Simulator - How It Works (English)")
+    st.write(r"""
+    ### Summary Calculation Formulas
+    - **Total Expected Loss**:  
+      \[ \sum (\text{Wager} \times \text{House Edge}) \]
+    - **Total Actual Loss**:  
+      Randomized loss based on normal distribution around expected loss.
+    - **Total Bonuses Paid**:  
+      \[ \sum (\text{Wager} \times \text{House Edge} \times \text{Bonus Percentage}) + \sum (\text{Actual Loss} \times \text{Loseback}) \]
+    - **Total Expected Profit**:  
+      \[ \text{Total Expected Loss} - \text{Total Bonuses Paid} \]
+    - **Total Actual Profit**:  
+      \[ \text{Total Actual Loss} - \text{Total Bonuses Paid} \]
+    - **Expected RTP**:  
+      \[ 1 - \text{House Edge} \]
+    - **Actual RTP**:  
+      \[ 1 - \left( \frac{\text{Total Actual Profit}}{\text{Total Wager}} \right) \]
+    - **Profitable Player Percentage**:  
+      \[ \left( \frac{\text{Profitable Players}}{\text{Total Players}} \right) \times 100 \]
+    """, unsafe_allow_html=True)
 
 with col2:
     st.image("https://i.imgur.com/NiEALyA.gif", width=500)
-    
